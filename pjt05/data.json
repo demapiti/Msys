@@ -1,24 +1,38 @@
 {
   "members": [
-
+    {
+      "avatar_url": "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+      "name": "Isha",
+      "email": "isha@email.com",
+      "birth": 805507200000,
+      "gender": "F",
+      "blood": "O+",
+      "weight": "60",
+      "height": "175",
+      "id": 1,
+      "created_at": 1615147078702
+    },
+    {
+      "avatar_url": "https://source.unsplash.com/collection/88642619/500x500",
+      "name": "Ablon",
+      "email": "ablon@email.com",
+      "birth": 792201600000,
+      "gender": "M",
+      "blood": "AB-",
+      "weight": "80",
+      "height": "180",
+      "id": 2,
+      "created_at": 1615147502001
+    }
   ],
   "instructors": [
-    {
-      "id": 1,
-      "name": "taaaaaaaa",
-      "avatar_url": "https://images.unsplash.com/photo-1594381898411-846e7d193883?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
-      "gender": "F",
-      "birth": 895017600000,
-      "services": "crossfit, musculação",
-      "created_at": 1614715445255
-    },
     {
       "id": 2,
       "name": "ddddddddddd",
       "avatar_url": "https://images.unsplash.com/photo-1567013127542-490d757e51fc?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=634&q=80",
       "gender": "M",
       "birth": 895017600000,
-      "services": "crossfit",
+      "services": "crossfit, musculação",
       "created_at": 1614715445255
     },
     {

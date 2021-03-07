@@ -2,31 +2,11 @@ const fs = require('fs')
 const data = require('../data.json')
 const { age, date } = require('../utils')
 
-// index
 exports.index = (req, res) => {
     return res.render('instructors/index', { instructors: data.instructors })
 }
 
-exports.show = (req, res) => {
-    const { id } = req.params
-
-    const foundInstructor = data.instructors.find((instructor) => {
-        return instructor.id == id
-    })
-
-    if (!foundInstructor) return res.send('Instructor not found!')
-
-    const instructor = {
-        ...foundInstructor,
-        age: age(foundInstructor.birth),
-        services: foundInstructor.services.split(','),
-        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
-    }
-
-    return res.render('instructors/show', { instructor: instructor })
-}
-
-exports.create = (req, red) => {
+exports.create = (req, res) => {
     return res.render('instructors/create')
 }
 
@@ -58,8 +38,27 @@ exports.post = (req, res) => {
     fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
         if (err) return res.send('Write file error!')
 
-        return res.redirect('/instructors')
+        return res.redirect(`/instructors/${id}`)
     })
+}
+
+exports.show = (req, res) => {
+    const { id } = req.params
+
+    const foundInstructor = data.instructors.find((instructor) => {
+        return instructor.id == id
+    })
+
+    if (!foundInstructor) return res.send('Instructor not found!')
+
+    const instructor = {
+        ...foundInstructor,
+        age: age(foundInstructor.birth),
+        services: foundInstructor.services.split(','),
+        created_at: new Intl.DateTimeFormat('pt-BR').format(foundInstructor.created_at)
+    }
+
+    return res.render('instructors/show', { instructor: instructor })
 }
 
 exports.edit = (req, res) => {
@@ -73,7 +72,7 @@ exports.edit = (req, res) => {
 
     const instructor = {
         ...foundInstructor,
-        birth: date(foundInstructor.birth)
+        birth: date(foundInstructor.birth).iso
     }
 
     return res.render('instructors/edit', { instructor: instructor })
