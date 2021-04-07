@@ -1,10 +1,27 @@
-const Instructor = require('../models/instructor')
+const Instructor = require('../models/Instructor')
 const { age, date } = require('../../lib/utils')
 
 module.exports = {
     index(req, res) {
-        Instructor.all((instructors) => {
-            return res.render('instructors/index', { instructors })
+        let { filter, page, limit } = req.query
+
+        page = page || 1
+        limit = limit || 2
+        let offset = limit * (page - 1)
+
+        const params = {
+            filter,
+            page,
+            limit,
+            offset
+        }
+
+        Instructor.paginate(params, (instructors) => {
+            const pagination = {
+                total: Math.ceil(instructors[0].total / limit),
+                page
+            }
+            return res.render('instructors/index', { instructors, filter, pagination })
         })
     },
     create(req, res) {
