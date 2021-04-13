@@ -22,11 +22,11 @@
 <div class="item">
     <div>Valor</div>
     <div>
-        <input type="text" name="price" placeholder="Preço do produto" value="{{product.price}}">
-        {% if product.old_price %}
-            <input type="hidden" name="old_price" value="{{product.old_price}}">
-        {% endif %}
+        <input type="text" name="price" placeholder="Preço do produto" value="{{product.price}}" onkeydown="Mask.apply(this, 'formatBRL')">
     </div>
+    {% if product.old_price %}
+        <input type="hidden" name="old_price" value="{{product.old_price}}">
+    {% endif %}
 </div>
 
 <div class="item">
@@ -39,7 +39,7 @@
         <div>Disponível?</div>
         <div>
             <span>
-                <input type="radio" name="status" value="1" {% if produtc.status == 1 %} checked
+                <input type="radio" name ="status" value="1" {% if produtc.status == 1 %} checked
                 {% endif %}>Sim
             </span>
             <span>
