@@ -20,6 +20,19 @@
 </div>
 
 <div class="item">
+    <div>Fotos</div>
+    <div>
+        <div id="photos-upload">
+            <input type="file" name="photos" id="photos-input" multiple accept="image/*" onchange="PhotosUpload.handleFileInput(event)">
+            <p>Selecione até 6 fotos</p>
+        </div>
+        <div id="photos-preview">
+            
+        </div>
+    </div>
+</div>
+
+<div class="item">
     <div>Valor</div>
     <div>
         <input type="text" name="price" placeholder="Preço do produto" value="{{product.price}}" onkeydown="Mask.apply(this, 'formatBRL')">
@@ -34,17 +47,17 @@
     <div><input type="number" name="quantity" placeholder="Estoque disponível" value="{{product.quantity}}"></div>
 </div>
 
-{% if product.status %}
+{% if product.status == '1' or product.status == '0' %}
     <div class="item">
         <div>Disponível?</div>
         <div>
             <span>
-                <input type="radio" name ="status" value="1" {% if produtc.status == 1 %} checked
-                {% endif %}>Sim
+                <input type="radio" name ="status" value="1" {% if product.status == '1' %}checked{% endif %}>
+                    Sim
             </span>
             <span>
-                <input type="radio" name="status" value="0" {% if produtc.status == 0 %} checked
-                {% endif %}>Não
+                <input type="radio" name="status" value="0" {% if product.status == '0' %} checked{% endif %}>
+                    Não
             </span>
         </div>
     </div>
